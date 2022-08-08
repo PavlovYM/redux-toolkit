@@ -10,12 +10,14 @@ const initialState: PostsState = {
     {
       id: 1,
       title: 'JS',
-      body: 'to learn more about'
+      body: 'to learn more about',
+      userId: null
     },
     {
       id: 2,
       title: 'JS',
-      body: 'to learn more about'
+      body: 'to learn more about',
+      userId: null
     },
   ]
 }
@@ -28,10 +30,11 @@ const postsSLice = createSlice({
       reducer(state, actions: PayloadAction<IPost>) {
         state.posts.push(actions.payload)
       },
-      prepare(title, body) {
+      prepare(title, body, userId) {
         return {
           payload: {
             id: parseInt(nanoid()),
+            userId,
             title,
             body
           }

@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material'
 
 import { IPost } from '../../model/IPost';
+import PostAuthor from './PostAuthor';
 
 interface PostItemProps {
   post: IPost
@@ -23,6 +24,7 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             {post.body.substring(0, 100)}
           </Typography>
+          <PostAuthor userId={post.userId}/>
         </CardContent>
 
         <CardActions>
