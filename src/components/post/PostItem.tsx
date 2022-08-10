@@ -8,6 +8,7 @@ import { Grid } from '@mui/material'
 
 import { IPost } from '../../model/IPost';
 import PostAuthor from './PostAuthor';
+import TimeAgo from './TimeAgo';
 
 interface PostItemProps {
   post: IPost
@@ -18,6 +19,7 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ width: '100%' }}>
         <CardContent>
+          
           <Typography variant="h5" component="div">
             {post.title}
           </Typography>
@@ -25,6 +27,7 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
             {post.body.substring(0, 100)}
           </Typography>
           <PostAuthor userId={post.userId}/>
+          <TimeAgo timestamp={post.date}/>
         </CardContent>
 
         <CardActions>

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction, nanoid } from "@reduxjs/toolkit";
+import { sub } from "date-fns";
 import { IPost } from "../../model/IPost";
 
 interface PostsState {
@@ -11,13 +12,15 @@ const initialState: PostsState = {
       id: 1,
       title: 'JS',
       body: 'to learn more about',
-      userId: null
+      userId: null,
+      date: sub(new Date(), {minutes: 10}).toISOString()
     },
     {
       id: 2,
       title: 'JS',
       body: 'to learn more about',
-      userId: null
+      userId: null,
+      date: sub(new Date(), {minutes: 5}).toISOString()
     },
   ]
 }
@@ -34,9 +37,10 @@ const postsSLice = createSlice({
         return {
           payload: {
             id: parseInt(nanoid()),
-            userId,
             title,
-            body
+            body,
+            userId,
+            date: new Date().toISOString()
           }
         }
       }

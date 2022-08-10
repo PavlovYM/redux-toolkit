@@ -8,10 +8,10 @@ interface PostListProps {
 }
 
 const PostsList: FC<PostListProps> = ({ posts }) => {
-
+  const orderPost = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
   return (
     <>
-      {posts.map(post =>
+      {orderPost.map(post =>
         <PostItem post={post} key={post.id} />
       )}
     </>
